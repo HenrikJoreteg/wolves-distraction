@@ -15,12 +15,21 @@ module.exports = View.extend({
     handleHowlClick: function () {
         var textarea = this.queryByHook('howl-input');
         var value = textarea.value;
+        var model;
 
         if (value) {
-            app.howls.create({
+            model = app.howls.create({
                 content: value,
                 createdAt: new Date()
+            }, {
+               error: function () {
+                    textarea.value = value;
+                    alert('Hey that didn\'t work');
+                    debugger;
+                    app.howls.remove(model);
+               }
             });
+            textarea.value = '';
         }
     }
 });
