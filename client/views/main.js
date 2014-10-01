@@ -9,6 +9,13 @@ module.exports = View.extend({
     events: {
         'click a[href]': 'handleLinkClick'
     },
+    bindings: {
+        'model.loggedIn': {
+            type: 'toggle',
+            yes: '[data-hook=logout]',
+            no: '[data-hook=login]'
+        }
+    },
     initialize: function () {
         this.listenTo(app.router, 'page', this.handleNewPage);
     },

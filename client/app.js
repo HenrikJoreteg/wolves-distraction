@@ -11,11 +11,12 @@ window.app = {
 
         this.router = new Router();
         this.howls = new Howls();
-        window.me = this.me = new Me();
+        this.me = window.me = new Me();
 
         domready(function () {
             self.view = new MainView({
-                el: document.body
+                el: document.body,
+                model: self.me
             });
 
             self.router.history.start({pushState: true});

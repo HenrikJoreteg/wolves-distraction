@@ -16,5 +16,12 @@ module.exports = Model.extend({
                 return moment(this.createdAt).fromNow();
             }
         }
+    },
+    ajaxConfig: function () {
+        return {
+            headers: {
+                'Auth-Token': me.token
+            }
+        };
     }
 });

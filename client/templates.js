@@ -17,19 +17,12 @@
 
     // body.jade compiled template
     templatizer["body"] = function tmpl_body() {
-        return '<body><nav class="navbar navbar-default"><div class="container-fluid"><div class="navbar-header"><a href="/" class="navbar-brand">Wolves</a></div><ul class="nav navbar-nav"><li><a href="/howls">howls</a></li></ul><ul class="nav navbar-nav pull-right"><li><a href="/login">login</a></li></ul></div></nav><div class="container"><main data-hook="page-container"> </main></div></body>';
+        return '<body><nav class="navbar navbar-default"><div class="container-fluid"><div class="navbar-header"><a href="/" class="navbar-brand">Wolves</a></div><ul class="nav navbar-nav"><li><a href="/howls">howls</a></li></ul><ul class="nav navbar-nav pull-right"><li data-hook="login"><a href="/login">login</a></li><li data-hook="logout"><a href="/logout">logout</a></li></ul></div></nav><div class="container"><main data-hook="page-container"> </main></div></body>';
     };
 
     // includes/howl.jade compiled template
-    templatizer["includes"]["howl"] = function tmpl_includes_howl(locals) {
-        var buf = [];
-        var jade_mixins = {};
-        var jade_interp;
-        var locals_for_with = locals || {};
-        (function(model) {
-            buf.push('<div class="well"><p>' + jade.escape(null == (jade_interp = model.niceDate) ? "" : jade_interp) + "</p><p>" + jade.escape(null == (jade_interp = model.user.username) ? "" : jade_interp) + "</p><pre>" + jade.escape(null == (jade_interp = model.content) ? "" : jade_interp) + "</pre></div>");
-        }).call(this, "model" in locals_for_with ? locals_for_with.model : typeof model !== "undefined" ? model : undefined);
-        return buf.join("");
+    templatizer["includes"]["howl"] = function tmpl_includes_howl() {
+        return '<div class="well"><p data-hook="date"></p><p data-hook="username"></p><pre data-hook="content"></pre></div>';
     };
 
     // pages/home.jade compiled template
@@ -39,7 +32,7 @@
 
     // pages/howls.jade compiled template
     templatizer["pages"]["howls"] = function tmpl_pages_howls() {
-        return '<section class="page"><h1>Howls! Awoooooooo!</h1><div data-hook="howls-container"></div></section>';
+        return '<section class="page"><h1>Howls! Awoooooooo!</h1><textarea data-hook="howl-input"></textarea><p><button data-hook="action-howl" class="btn btn-primary">Howl</button></p><div data-hook="howls-container"></div></section>';
     };
 
     return templatizer;

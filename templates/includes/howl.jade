@@ -1,4 +1,4 @@
 .well
-  p= model.niceDate
-  p= model.user.username
-  pre= model.content
+  p(data-hook='date')
+  p(data-hook='username')
+  pre(data-hook='content')

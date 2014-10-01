@@ -7,7 +7,9 @@ body
         li
           a(href='/howls') howls
       ul.nav.navbar-nav.pull-right
-        li
+        li(data-hook='login')
           a(href='/login') login
+        li(data-hook='logout')
+          a(href='/logout') logout
   .container
     main(data-hook="page-container") 

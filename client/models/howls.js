@@ -7,5 +7,8 @@ module.exports = Collection.extend({
     model: Howl,
     initialize: function () {
         this.fetch();
+    },
+    comparator: function (model) {
+        return -1 * model.createdAt.valueOf();
     }
 });
