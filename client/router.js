@@ -6,7 +6,9 @@ var HowlsPage = require('./pages/howls');
 module.exports = Router.extend({
     routes: {
         '': 'home',
-        'howls': 'howls'
+        'howls': 'howls',
+        'login': 'login',
+        'auth/callback': 'authCallback'
     },
 
     home: function () {
@@ -15,5 +17,11 @@ module.exports = Router.extend({
 
     howls: function () {
         this.trigger('page', new HowlsPage());
+    },
+
+    login: function () {
+        var baseUrl = 'http://wolves.technology/authorize?redirect_uri=';
+
+        window.location = baseUrl + encodeURIComponent(window.location.origin + '/auth/callback')
     }
 });
