@@ -25,7 +25,6 @@ module.exports = View.extend({
                error: function () {
                     textarea.value = value;
                     alert('Hey that didn\'t work');
-                    debugger;
                     app.howls.remove(model);
                }
             });
